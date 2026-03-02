@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matt Huang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #F9F6F1;
+    color: #1a1a1a;
+    overflow-x: hidden;
+  }
+
+  /* ─── PAGE 1: SPLIT HERO ─── */
+  .page {
+    min-height: 100vh;
+    display: flex;
+  }
+
+  /* LEFT — black panel */
+  .left {
+    width: 45%;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .left-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  .issue-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  /* big vertical text */
+  .left-vert {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  .left-main {
+    padding: 0 0 20px;
+  }
+
+  .left-kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #E8B84B;
+    margin-bottom: 24px;
+  }
+
+  .left-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 4.5vw, 76px);
+    font-weight: 900;
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+
+  .left-headline em {
+    font-style: italic;
+    color: #E8B84B;
+  }
+
+  .left-body {
+    font-size: 15px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.75;
+    max-width: 340px;
+    margin-bottom: 44px;
+    border-left: 2px solid #E8B84B;
+    padding-left: 20px;
+  }
+
+  .left-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #E8B84B;
+    color: #111;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .left-cta:hover { background: #f5cc70; transform: translateY(-1px); }
+
+  .left-bottom {
+    display: flex;
+    gap: 32px;
+    border-top: 1px solid #222;
+    padding-top: 28px;
+  }
+
+  .stat-l {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-l-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .stat-l-label {
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  /* RIGHT — cream editorial */
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* top strip - magazine header */
+  .right-header {
+    padding: 32px 52px;
+    border-bottom: 2px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mag-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+  }
+
+  .mag-date {
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.06em;
+  }
+
+  /* featured story area */
+  .right-story {
+    flex: 1;
+    padding: 52px 52px 0;
+    position: relative;
+  }
+
+  .story-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  .story-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    max-width: 480px;
+  }
+
+  .story-headline em {
+    font-style: italic;
+    color: #1a1a1a;
+  }
+
+  .story-divider {
+    width: 48px;
+    height: 2px;
+    background: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  .story-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.8;
+    max-width: 420px;
+    column-count: 1;
+  }
+
+  /* pull quote */
+  .pull-quote {
+    margin: 40px 0 0;
+    padding: 28px 32px;
+    background: #1a1a1a;
+    color: #fff;
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: #E8B84B;
+    position: absolute;
+    top: -20px;
+    left: 24px;
+    line-height: 1;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.5;
+    color: #fff;
+    padding-top: 20px;
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #E8B84B;
+    margin-top: 16px;
+  }
+
+  /* ─── PAGE 2: TICKER + REASONS ─── */
+  .ticker {
+    background: #1a1a1a;
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #555;
+    padding: 0 44px;
+  }
+
+  .ticker-item.hi { color: #E8B84B; font-style: normal; font-weight: 700; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* reasons section */
+  .reasons {
+    padding: 100px 0;
+    background: #F9F6F1;
+  }
+
+  .reasons-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .reasons-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 72px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #DDD8D0;
+  }
+
+  .reasons-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 4vw, 60px);
+    font-weight: 900;
+    line-height: 1.05;
+  }
+  .reasons-title em { font-style: italic; }
+
+  .reasons-intro {
+    font-size: 15px;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.8;
+    align-self: end;
+  }
+
+  .reason-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .reason {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid #DDD8D0;
+    cursor: default;
+    transition: padding-left 0.25s;
+  }
+  .reason:hover { padding-left: 12px; }
+
+  .reason-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #E8E3DC;
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .reason-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .reason-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .reason-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #E8B84B;
+    background: #FDF5E3;
+    padding: 6px 14px;
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  /* ─── PAGE 3: CLIFFHANGER ─── */
+  .cliff {
+    background: #F9F6F1;
+    padding: 120px 60px;
+    border-top: 2px solid #1a1a1a;
+  }
+
+  .cliff-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .cliff-left .kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  .cliff-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 4.5vw, 68px);
+    font-weight: 900;
+    line-height: 1.0;
+    margin-bottom: 28px;
+  }
+  .cliff-headline em { font-style: italic; }
+
+  .cliff-body {
+    font-size: 15px;
+    font-weight: 300;
+    color: #777;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 400px;
+  }
+  .cliff-body strong { color: #1a1a1a; font-weight: 500; }
+
+  .cliff-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 17px 36px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    margin-bottom: 16px;
+  }
+  .cliff-cta:hover { background: #E8B84B; color: #111; transform: translateY(-2px); }
+
+  .cliff-fine {
+    display: block;
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 0.04em;
+  }
+
+  /* blurred module stack */
+  .cliff-right {
+    position: relative;
+  }
+
+  .module-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    filter: blur(5px);
+    opacity: 0.3;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .module {
+    background: #fff;
+    border: 1px solid #E8E3DC;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .module-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #E8E3DC;
+    line-height: 1;
+    min-width: 36px;
+  }
+
+  .module-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 3px;
+  }
+  .module-sub { font-size: 12px; color: #aaa; }
+
+  .stack-lock {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(249,246,241,0.5);
+    backdrop-filter: blur(1px);
+  }
+
+  .lock-icon { font-size: 26px; }
+
+  .lock-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #999;
+  }
+
+  /* animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.on { opacity: 1; transform: none; }
+  .d1 { transition-delay: 0.12s; }
+  .d2 { transition-delay: 0.24s; }
+  .d3 { transition-delay: 0.36s; }
+</style>
+</head>
+<body>
+
+<!-- ① SPLIT HERO -->
+<section class="page">
+
+  <!-- LEFT BLACK PANEL -->
+  <div class="left">
+    <div class="left-top">
+      <div class="logo">Matt Huang</div>
+      <div class="issue-tag">Vol. 01 — 2025</div>
+    </div>
+
+    <div class="left-vert">Online Income · Creator Economy</div>
+
+    <div class="left-main">
+      <div class="left-kicker">Featured Program</div>
+      <h1 class="left-headline">
+        Build Income<br>
+        Streams That<br>
+        Work <em>While<br>You Sleep.</em>
+      </h1>
+      <p class="left-body">
+        Matt Huang teaches creators and entrepreneurs how to build real online income — through proven strategies, honest advice, and systems that actually scale.
+      </p>
+      <a href="#" class="left-cta">Start Building Today →</a>
+    </div>
+
+    <div class="left-bottom">
+      <div class="stat-l">
+        <div class="stat-l-n">100K+</div>
+        <div class="stat-l-label">Subscribers</div>
+      </div>
+      <div class="stat-l">
+        <div class="stat-l-n">IB · BCG</div>
+        <div class="stat-l-label">Background</div>
+      </div>
+      <div class="stat-l">
+        <div class="stat-l-n">$0 Fluff</div>
+        <div class="stat-l-label">Just What Works</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT EDITORIAL PANEL -->
+  <div class="right">
+    <div class="right-header">
+      <div class="mag-title">The Creator's Playbook</div>
+      <div class="mag-date">Exclusive — 2025 Edition</div>
+    </div>
+
+    <div class="right-story">
+      <div class="story-label">Inside This Issue</div>
+      <h2 class="story-headline">
+        How a Google & BCG Analyst<br>
+        Built a <em>100K+ Creator Business</em><br>
+        Working Nights & Weekends
+      </h2>
+      <div class="story-divider"></div>
+      <p class="story-body">
+        Most people teaching you online income have never held a real job. Matt Huang spent years in investment banking, consulting, and big tech — then built his creator business on the side. He's not teaching theory. He's teaching the exact system he used, tested with his own money and time.
+      </p>
+
+      <div class="pull-quote">
+        <p>You don't need another guru telling you to "hustle harder." You need a clear path, the right tools, and someone who's actually done it.</p>
+        <cite>— Matt Huang, Founder</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Built while working full-time</span>
+    <span class="ticker-item hi">◆ Real Strategies ◆</span>
+    <span class="ticker-item">0 to 100K in 18 months</span>
+    <span class="ticker-item hi">◆ No Fluff ◆</span>
+    <span class="ticker-item">IB · BCG · Google Background</span>
+    <span class="ticker-item hi">◆ Actual Systems ◆</span>
+    <span class="ticker-item">Creator Economy Done Right</span>
+    <span class="ticker-item hi">◆ Honest Advice ◆</span>
+    <span class="ticker-item">Built while working full-time</span>
+    <span class="ticker-item hi">◆ Real Strategies ◆</span>
+    <span class="ticker-item">0 to 100K in 18 months</span>
+    <span class="ticker-item hi">◆ No Fluff ◆</span>
+    <span class="ticker-item">IB · BCG · Google Background</span>
+    <span class="ticker-item hi">◆ Actual Systems ◆</span>
+    <span class="ticker-item">Creator Economy Done Right</span>
+    <span class="ticker-item hi">◆ Honest Advice ◆</span>
+  </div>
+</div>
+
+<!-- ② REASONS -->
+<section class="reasons">
+  <div class="reasons-inner">
+    <div class="reasons-header reveal">
+      <h2 class="reasons-title">Why Most<br>Creators Stay<br><em>Broke.</em></h2>
+      <p class="reasons-intro">The internet is full of income advice. Almost none of it is built on real experience. Here's what's actually going wrong — and why Matt's approach is different.</p>
+    </div>
+
+    <div class="reason-list">
+      <div class="reason reveal">
+        <div class="reason-num">01</div>
+        <div>
+          <div class="reason-title">They're learning from people who haven't done it</div>
+          <p class="reason-body">Most "passive income" gurus have never held a real job or built anything outside of selling courses. Matt spent years in IB, BCG, and Google before building his creator business. The difference shows.</p>
+        </div>
+        <div class="reason-tag">Credibility</div>
+      </div>
+
+      <div class="reason reveal d1">
+        <div class="reason-num">02</div>
+        <div>
+          <div class="reason-title">Platform hopping instead of compounding</div>
+          <p class="reason-body">A new trending platform every quarter. Nothing builds. Nothing stacks. Real income online comes from picking the right vehicle and going deep — not chasing every wave.</p>
+        </div>
+        <div class="reason-tag">Strategy</div>
+      </div>
+
+      <div class="reason reveal d2">
+        <div class="reason-num">03</div>
+        <div>
+          <div class="reason-title">Income with no infrastructure behind it</div>
+          <p class="reason-body">One viral month, then silence. Because there's no system feeding it. Matt built income streams that run whether he posts or not — and he'll show you the exact setup.</p>
+        </div>
+        <div class="reason-tag">Systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ CLIFFHANGER -->
+<section class="cliff">
+  <div class="cliff-layout">
+    <div class="cliff-left reveal">
+      <div class="kicker">What's Inside</div>
+      <h2 class="cliff-headline">
+        The Exact<br>
+        System.<br>
+        <em>Unlocked.</em>
+      </h2>
+      <p class="cliff-body">
+        You don't need to figure this out alone. Matt built his first 100K following while working full-time — using <strong>a repeatable, honest, no-hype system.</strong> It's all in here. Apply to see it.
+      </p>
+      <a href="#" class="cliff-cta">See the Full Breakdown →</a>
+      <span class="cliff-fine">Apply to unlock — takes under 2 minutes</span>
+    </div>
+
+    <div class="cliff-right reveal d2">
+      <div class="module-stack">
+        <div class="module">
+          <div class="module-n">1</div>
+          <div>
+            <div class="module-title">Niche & Audience Architecture</div>
+            <div class="module-sub">Build a channel that compounds from day one...</div>
+          </div>
+        </div>
+        <div class="module">
+          <div class="module-n">2</div>
+          <div>
+            <div class="module-title">Content Flywheel System</div>
+            <div class="module-sub">Create less, distribute more, grow faster...</div>
+          </div>
+        </div>
+        <div class="module">
+          <div class="module-n">3</div>
+          <div>
+            <div class="module-title">Monetization Stack</div>
+            <div class="module-sub">Layer income streams so nothing can take you down...</div>
+          </div>
+        </div>
+        <div class="module">
+          <div class="module-n">4</div>
+          <div>
+            <div class="module-title">Build Around Your Life</div>
+            <div class="module-sub">The exact workflow Matt runs while working full-time...</div>
+          </div>
+        </div>
+      </div>
+      <div class="stack-lock">
+        <div class="lock-icon">🔒</div>
+        <div class="lock-text">Apply to Unlock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('on')), { threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
